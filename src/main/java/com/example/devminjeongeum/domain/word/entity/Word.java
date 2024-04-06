@@ -19,9 +19,12 @@ public class Word extends Auditable {
 
     private String wordName;
 
+    private String wordDescription;
+
     private String wordSpeak;
 
-    private String wordEx;
+    private String wrongSpeak;
 
-    private String wordDescription;
+    private String wordExample;
+
 }
