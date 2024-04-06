@@ -1,6 +1,8 @@
 package com.example.devminjeongeum.domain.word.service;
 
+import com.example.devminjeongeum.domain.word.dto.WordAllResponseDto;
 import com.example.devminjeongeum.domain.word.dto.WordResponseDto;
+import com.example.devminjeongeum.domain.word.dto.WordSelectResponseDto;
 import com.example.devminjeongeum.domain.word.entity.Word;
 import com.example.devminjeongeum.domain.word.repository.WordRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,12 +17,14 @@ public class WordService {
 
     private final WordRepository wordRepository;
 
-    public Page<Word> getAllword(int page, int size) {
+    public Page<WordResponseDto> getAllword(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
-        return wordRepository.findAll(pageable);
+        Page<Word> wordPage  = wordRepository.findAll(pageable);
+        return wordPage.map(WordResponseDto::new);
     }
 
-    public Word getWordSelect(Long wordId) {
-        return wordRepository.findById(wordId).orElseThrow(() -> new IllegalArgumentException("단어가 없습니다."));
+    public WordSelectResponseDto getWordSelect(Long wordId) {
+        Word wordSelect = wordRepository.findById(wordId).orElseThrow(() -> new IllegalArgumentException("단어가 없습니다."));
+        return new WordSelectResponseDto(wordSelect);
     }
 }

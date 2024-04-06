@@ -4,7 +4,7 @@ import com.example.devminjeongeum.domain.word.entity.Word;
 import lombok.Getter;
 
 @Getter
-public class WordResponseDto {
+public class WordSelectResponseDto {
     private final long wordId;
     private final String wordName;
     private final String wordDescription;
@@ -12,7 +12,7 @@ public class WordResponseDto {
     private final String wrongSpeak;
     private final String wordExample;
 
-    public WordResponseDto(Word word){
+    public WordSelectResponseDto(Word word){
         this.wordId = word.getWordId();
         this.wordName = word.getWordName();
         this.wordDescription = word.getWordDescription();
