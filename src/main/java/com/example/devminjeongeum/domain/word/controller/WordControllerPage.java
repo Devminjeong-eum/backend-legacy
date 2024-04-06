@@ -49,9 +49,8 @@ public class WordControllerPage {
     }
 
     @GetMapping("/word/{wordId}")
-    public String wordSelect(Model model,@PathVariable Long wordId){
+    public ResponseEntity<Word> wordSelect(Model model,@PathVariable Long wordId){
         Word word = wordService.getWordSelect(wordId);
-        model.addAttribute("word", word);
-        return null  ;
+        return ResponseEntity.ok().body(word);
     }
 }
