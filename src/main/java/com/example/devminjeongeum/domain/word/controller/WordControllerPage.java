@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -20,9 +23,11 @@ public class WordControllerPage {
     private final WordService wordService;
 
     @GetMapping("/words")
-    public String wordAll(Model model, @PageableDefault(page = 0, size = 20, sort ="id", direction = Sort.Direction.ASC) Pageable pageable){
-        Page<WordResponseDto> wordResponseDtoPage = wordService.getAllword(pageable);
-        model.addAttribute("wordList", wordResponseDtoPage);
+    public String wordAll(Model model,
+                          @RequestParam(defaultValue = "0") int page,
+                          @RequestParam(defaultValue = "10") int size){
+        Page<Word> wordPage = wordService.getAllword(page -1,size);
+        model.addAttribute("wordPage", wordPage);
         return "Allword";
     }
 
