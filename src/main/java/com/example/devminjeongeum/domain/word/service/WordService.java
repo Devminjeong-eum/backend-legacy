@@ -24,4 +24,8 @@ public class WordService {
                 word.getWordDescription()
         ));
     }
+
+    public Word getWordSelect(Long wordId) {
+        return wordRepository.findById(wordId).orElseThrow(() -> new IllegalArgumentException("단어가 없습니다."));
+    }
 }
