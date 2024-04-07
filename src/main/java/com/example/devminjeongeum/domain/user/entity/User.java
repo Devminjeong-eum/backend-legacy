@@ -17,4 +17,9 @@ public class User extends Auditable {
     private Long userId;
     private String nickname;
     private String email;
+
+    public User updateKakaoId(Long kakaoId) {
+        this.userId = kakaoId;
+        return this;
+    }
 }
