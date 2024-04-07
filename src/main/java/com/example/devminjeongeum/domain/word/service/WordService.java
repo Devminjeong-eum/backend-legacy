@@ -11,6 +11,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class WordService {
@@ -26,5 +28,11 @@ public class WordService {
     public WordSelectResponseDto getWordSelect(Long wordId) {
         Word wordSelect = wordRepository.findById(wordId).orElseThrow(() -> new IllegalArgumentException("단어가 없습니다."));
         return new WordSelectResponseDto(wordSelect);
+    }
+
+    public Page<WordResponseDto> getWordSearch(String wordName,int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Word> wordSearch = wordRepository.findByWordNameContaining(wordName,pageable);
+        return wordSearch.map(WordResponseDto::new);
     }
 }
