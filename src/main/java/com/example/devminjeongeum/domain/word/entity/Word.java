@@ -1,6 +1,5 @@
 package com.example.devminjeongeum.domain.word.entity;
 
-import com.example.devminjeongeum.global.audit.Auditable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

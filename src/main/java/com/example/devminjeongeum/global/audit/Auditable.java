@@ -11,16 +11,16 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
-@Getter
-@MappedSuperclass
-@EntityListeners(AuditingEntityListener.class)
-public abstract class Auditable {
-
-    @CreatedDate
-    @Column(updatable = false, nullable = false)
-    private LocalDateTime createdAt = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
-
-    @LastModifiedDate
-    @Column
-    private LocalDateTime modifiedAt;
-}
+//@Getter
+//@MappedSuperclass
+//@EntityListeners(AuditingEntityListener.class)
+//public abstract class Auditable {
+//
+//    @CreatedDate
+//    @Column(updatable = false, nullable = false)
+//    private LocalDateTime createdAt = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
+//
+//    @LastModifiedDate
+//    @Column
+//    private LocalDateTime modifiedAt;
+//}
