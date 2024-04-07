@@ -18,7 +18,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RequestMapping("/api")
 public class WordController {
-
+//
     private final WordService wordService;
 
     @GetMapping("/words")
