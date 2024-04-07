@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Word extends Auditable {
+public class Word {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long wordId;
